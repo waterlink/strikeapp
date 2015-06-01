@@ -10,7 +10,6 @@ Day.prototype.strike = function() {
 
 Day.prototype.feed_mark = function(mark) {
   if (!this._same_day(mark.when)) { return }
-  console.log("striking!", mark)
   this.strike()
 }
 

@@ -55,7 +55,6 @@ Week.prototype.feed_mark = function(mark) {
 }
 
 Week.prototype._same_week = function(other_when) {
-  console.log(this.when, this.end_of_week, 'same week?', other_when)
   return other_when >= this.when &&
     other_when < this.end_of_week
 }
