@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>STRIKE APP</title>
+<meta name="description" content="STRIKE APP - Keep track of your strikes">
+<meta name="author" content="waterlink">
+
+<link rel="stylesheet" href="css/styles.css?v=1.0">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+<strikeapp-strike></strikeapp-strike>
+
+<script src="//cdn.jsdelivr.net/g/riot@2.1(riot.min.js+compiler.min.js)"></script>
+
+<script src="init.js"></script>
+
+<script src="models/mark.js"></script>
+<script src="models/day.js"></script>
+<script src="models/week.js"></script>
+
+<script src="components/strike.tag" type="riot/tag"></script>
+<script src="components/week.tag" type="riot/tag"></script>
+<script src="components/day.tag" type="riot/tag"></script>
+
+<script>
+riot.mount('*')
+</script>
+
+</body>
+</html>

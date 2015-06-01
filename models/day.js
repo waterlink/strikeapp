@@ -1,0 +1,21 @@
+var Day = models.Day = function(attributes) {
+  this.striked = attributes.striked
+  this.index = attributes.index
+  this.when = new Date(attributes.when)
+}
+
+Day.prototype.strike = function() {
+  this.striked = true
+}
+
+Day.prototype.feed_mark = function(mark) {
+  if (!this._same_day(mark.when)) { return }
+  console.log("striking!", mark)
+  this.strike()
+}
+
+Day.prototype._same_day = function(other_when) {
+  return this.when.getDate() == other_when.getDate() &&
+    this.when.getMonth() == other_when.getMonth() &&
+    this.when.getFullYear() == other_when.getFullYear()
+}
