@@ -1,6 +1,6 @@
 <strikeapp-day>
   <svg>
-    <rect fill={ color } y={ y } width=11 height=11></rect>
+    <rect strikeapp:fill={ color } strikeapp:y={ y } width=11 height=11></rect>
   </svg>
 
   <script>

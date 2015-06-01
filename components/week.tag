@@ -1,6 +1,6 @@
 <strikeapp-week>
   <svg>
-    <g transform={ translate }>
+    <g strikeapp:transform={ translate }>
       <strikeapp-day each={ days } day={ this }></strikeapp-day>
     </g>
   </svg>
