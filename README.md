@@ -3,7 +3,7 @@
 ## TODO
 
 - [ ] Write readme
-- [ ] Extract mixin/object from tags
+- [x] Extract mixin/object from tags
 - [ ] Deal with svg warnings (late attribute binding ?)
 - [ ] Cover models with tests (jasmine)
 - [ ] Add ability to create mark (tapping for when = today) and remove it by tapping again
