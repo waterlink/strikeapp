@@ -14,3 +14,7 @@
 - [ ] Optional auth + Sync data with backend API
 - [ ] Date on-hover-title on elements + mark today with special color when empty
 - [ ] Cache calculated weeks with their respective days in local storage
+
+## Running tests
+
+just visit `/jasmine.html`

@@ -1,7 +1,8 @@
 var day = 1000 * 60 * 60 * 24,
     now = new Date,
     yesterday = now - day,
-    week_ago = now - 7 * day
+    week_ago = now - 7 * day,
+    year_ago = now - 366 * day
 
 var Mark = models.Mark = function(attributes) {
   riot.observable(this)
@@ -16,15 +17,19 @@ Mark.all = function() {
   return Mark._data
 }
 
-// FIXME temporary, last year = all
-Mark.last_year = Mark.all
+Mark.last_year = function() {
+  return Mark.all().filter(function(mark) {
+    return mark.when > new Date(year_ago)
+  })
+}
 
 Mark.create = function(attributes) {
-  Mark.insert(new Mark(attributes))
+  return Mark.insert(new Mark(attributes))
 }
 
 Mark.insert = function(mark) {
   Mark._data.push(mark)
+  return mark
 }
 
 // FIXME temporary example data
