@@ -5,7 +5,7 @@
 - [ ] Write readme
 - [x] Extract mixin/object from tags
 - [x] Deal with svg warnings (late attribute binding ?)
-- [ ] Cover models with tests (jasmine)
+- [x] Cover models with tests (jasmine)
 - [ ] Add ability to create mark (tapping for when = today) and remove it by tapping again
 - [ ] Fix FIXMEs
 - [ ] Store marks in local storage (check if android and iphone works)
