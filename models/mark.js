@@ -18,7 +18,7 @@ Mark.all = function() {
 
 Mark.last_year = function() {
   return Mark.all().filter(function(mark) {
-    return mark.when > Date.new(year_ago)
+    return mark.isLastYear()
   })
 }
 
@@ -28,7 +28,12 @@ Mark.create = function(attributes) {
 
 Mark.insert = function(mark) {
   Mark._data.push(mark)
+  Mark.trigger("insert", mark)
   return mark
+}
+
+Mark.prototype.isLastYear = function() {
+  return this.when > Date.new(year_ago)
 }
 
 // FIXME temporary example data

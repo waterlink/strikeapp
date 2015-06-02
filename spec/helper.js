@@ -1,3 +1,3 @@
 beforeEach(function() {
-  Mark._data = []
+  models.Mark._data = []
 })

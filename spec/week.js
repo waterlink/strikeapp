@@ -130,7 +130,6 @@ describe("Week", function() {
       feedMarksSpy.prototype.fn = function() {
         var that = this
         return function(marks) {
-          console.log(that)
           that.calledWith = []
           for (var i = 0; i < marks.length; ++i) {
             that.calledWith.push(marks[i].when)
@@ -149,10 +148,12 @@ describe("Week", function() {
           }
         }
 
-        weeks = Week.last_year(weekFactory)
-        mark = Mark.create({ when: week_ago })
+        Mark._data = []
+        mark = Mark.create({ when: now.add_days(-29) })
         other_mark = Mark.create({ when: yesterday })
         old_mark = Mark.create({ when: now.add_days(-450) })
+
+        weeks = Week.last_year(weekFactory)
       })
 
       it("feeds marks from last year to all weeks", function() {
@@ -160,6 +161,26 @@ describe("Week", function() {
           var week = weeks[i]
           expect(week.feed_marks.spy.calledWith).toEqual([mark.when, other_mark.when])
         }
+      })
+
+      context("when new mark gets added afterwards", function() {
+        it("feeds this mark to all weeks", function() {
+          var new_mark = Mark.create({ when: now.add_days(-27) })
+
+          for (var i = 0; i < 52; ++i) {
+            var week = weeks[i]
+            expect(week.feed_marks.spy.calledWith).toEqual([new_mark.when])
+          }
+        })
+
+        it("ignores new marks that are not from last year", function() {
+          var new_mark = Mark.create({ when: now.add_days(-390) })
+
+          for (var i = 0; i < 52; ++i) {
+            var week = weeks[i]
+            expect(week.feed_marks.spy.calledWith).not.toEqual([new_mark.when])
+          }
+        })
       })
     })
   })

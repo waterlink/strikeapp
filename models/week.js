@@ -35,6 +35,14 @@ Week.last_year = function(weekFactory) {
     weeks[i] = week
   }
 
+  Mark.on("insert", function(mark) {
+    for (var i = 0; i < weeks_count; ++i) {
+      if (mark.isLastYear()) {
+        weeks[i].feed_marks([mark])
+      }
+    }
+  })
+
   return weeks
 }
 
