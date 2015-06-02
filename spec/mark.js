@@ -8,7 +8,7 @@ describe("Mark", function() {
   })
 
   it("can be instantiated", function() {
-    expect(mark.when).toEqual(new Date(yesterday))
+    expect(mark.when).toEqual(Date.new(yesterday))
   })
 
   it("instantitated mark is not persisted", function() {
@@ -28,7 +28,7 @@ describe("Mark", function() {
     })
 
     it("returns instantiated Mark", function() {
-      expect(mark.when).toEqual(new Date(week_ago))
+      expect(mark.when).toEqual(Date.new(week_ago))
     })
 
     it("persists instantiated Mark", function() {
@@ -41,9 +41,9 @@ describe("Mark", function() {
         very_old_mark
 
     beforeEach(function() {
-      old_mark = Mark.create({ when: now - 366 * day })
-      very_old_mark = Mark.create({ when: now - 367 * day })
-      mark = Mark.create({ when: now - 23 * day })
+      old_mark = Mark.create({ when: now.add_days(-365) })
+      very_old_mark = Mark.create({ when: now.add_days(-367) })
+      mark = Mark.create({ when: now.add_days(-23) })
     })
 
     describe(".all", function() {

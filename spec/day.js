@@ -10,7 +10,7 @@ describe("Day", function() {
   })
 
   it("can be instantiated", function() {
-    expect(day.when).toEqual(new Date(yesterday))
+    expect(day.when).toEqual(Date.new(yesterday))
     expect(day.index).toEqual(3)
     expect(day.striked).toEqual(false)
   })
@@ -39,7 +39,7 @@ describe("Day", function() {
     context("when mark is on the same day", function() {
       beforeEach(function() {
         var now = day.when,
-            today = new Date(+now)
+            today = Date.new(+now)
 
         today.setHours(3)
         today.setMinutes(27)

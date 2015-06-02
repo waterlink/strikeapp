@@ -1,7 +1,7 @@
 var Day = models.Day = function(attributes) {
   this.striked = attributes.striked
   this.index = attributes.index
-  this.when = new Date(attributes.when)
+  this.when = Date.new(attributes.when)
 }
 
 Day.prototype.strike = function() {

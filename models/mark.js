@@ -1,12 +1,11 @@
-var day = 1000 * 60 * 60 * 24,
-    now = new Date,
-    yesterday = now - day,
-    week_ago = now - 7 * day,
-    year_ago = now - 366 * day
+var now = Date.new(),
+    yesterday = now.add_days(-1),
+    week_ago = now.add_days(-7),
+    year_ago = now.add_days(-366)
 
 var Mark = models.Mark = function(attributes) {
   riot.observable(this)
-  this.when = new Date(attributes.when)
+  this.when = Date.new(attributes.when)
 }
 
 riot.observable(Mark)
@@ -19,7 +18,7 @@ Mark.all = function() {
 
 Mark.last_year = function() {
   return Mark.all().filter(function(mark) {
-    return mark.when > new Date(year_ago)
+    return mark.when > Date.new(year_ago)
   })
 }
 
