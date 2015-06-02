@@ -3,7 +3,6 @@ describe("Mark", function() {
       mark
 
   beforeEach(function() {
-    Mark._data = []
     mark = new Mark({ when: yesterday })
   })
 

@@ -13,13 +13,19 @@ var Week = models.Week = function(attributes) {
   this._init_days()
 }
 
-Week.last_year = function() {
+Week.new = function(attributes) {
+  return new Week(attributes)
+}
+
+Week.last_year = function(weekFactory) {
+  weekFactory = weekFactory || Week
+
   var weeks = [],
       next_sunday = Week._next_sunday(),
       marks = models.Mark.last_year()
 
   for (var i = 0; i < weeks_count; ++i) {
-    var week = new Week({
+    var week = weekFactory.new({
       index: i,
       when: next_sunday.add_days(-week_days * (weeks_count - i))
     })
