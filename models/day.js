@@ -4,8 +4,11 @@ var Day = models.Day = function(attributes) {
   this.when = Date.new(attributes.when)
 }
 
+riot.observable(Day)
+
 Day.prototype.strike = function() {
   this.striked = true
+  Day.trigger("update", this)
 }
 
 Day.prototype.feed_mark = function(mark) {

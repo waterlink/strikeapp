@@ -7,10 +7,29 @@
     this.mixin("svg")
     this.initSvg()
 
-    this.striked = this.opts.day.striked
-    this.index = this.opts.day.index
+    this.day = this.opts.day
+    this.striked = this.day.striked
+    this.index = this.day.index
 
-    this.color = this.striked ? "#196a27" : "#eeeeee"
+    var that = this
+    Day.on("update", function(day) {
+      if (that.day.when != day.when) { return }
+      that.striked = day.striked
+      that.trigger("striked-update")
+    })
+
     this.y = 13 * this.index
+
+    colorFromStriked() {
+      return this.striked ? "#196a27" : "#eeeeee"
+    }
+
+    this.color = this.colorFromStriked()
+
+    this.on("striked-update", function() {
+      this.color = this.colorFromStriked()
+      this.update()
+      this.trigger("update")
+    })
   </script>
 </strikeapp-day>
