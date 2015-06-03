@@ -8,7 +8,8 @@
 - [x] Cover models with tests (jasmine)
 - [x] Add ability to create mark (tapping for when = today)
 - [x] Fix FIXMEs
-- [ ] Store marks in local storage (check if android and iphone works)
+- [x] Store marks in local storage (check if android and iphone works)
+- [ ] Use concept of public/private/priviliged members of object
 - [ ] Add nice desktop/mobile styles and layout
 - [ ] Fix snake_case => camelCase
 - [ ] and remove it by tapping again

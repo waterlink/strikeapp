@@ -1,6 +1,10 @@
 describe("Mark", function() {
   var Mark = models.Mark,
-      mark
+      mark,
+
+      timestampsOf = function(marks) {
+        return marks.map(function(x) { return +x.when })
+      }
 
   beforeEach(function() {
     mark = new Mark({ when: yesterday })
@@ -11,13 +15,15 @@ describe("Mark", function() {
   })
 
   it("instantitated mark is not persisted", function() {
-    expect(Mark.all().indexOf(mark)).toEqual(-1)
+    expect(timestampsOf(Mark.all()).indexOf(+mark.when))
+      .toEqual(-1)
   })
 
   describe(".insert", function() {
     it("persists passed in Mark", function() {
       Mark.insert(mark)
-      expect(Mark.all().indexOf(mark)).toBeGreaterThan(-1)
+      expect(timestampsOf(Mark.all()).indexOf(+mark.when))
+        .toEqual(0)
     })
   })
 
@@ -31,7 +37,8 @@ describe("Mark", function() {
     })
 
     it("persists instantiated Mark", function() {
-      expect(Mark.all().indexOf(mark)).toBeGreaterThan(-1)
+      expect(timestampsOf(Mark.all()).indexOf(+mark.when))
+        .toEqual(0)
     })
   })
 
@@ -47,15 +54,15 @@ describe("Mark", function() {
 
     describe(".all", function() {
       it("returns all marks", function() {
-        expect(Mark.all())
-          .toEqual([old_mark, very_old_mark, mark])
+        expect(timestampsOf(Mark.all()))
+          .toEqual(timestampsOf([old_mark, very_old_mark, mark]))
       })
     })
 
     describe(".last_year", function() {
       it("returns only marks from last year", function() {
-        expect(Mark.last_year())
-          .toEqual([old_mark, mark])
+        expect(timestampsOf(Mark.last_year()))
+          .toEqual(timestampsOf([old_mark, mark]))
       })
     })
   })

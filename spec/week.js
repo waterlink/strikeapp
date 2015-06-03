@@ -148,7 +148,7 @@ describe("Week", function() {
           }
         }
 
-        Mark._data = []
+        Mark._data._reset()
         mark = Mark.create({ when: now.add_days(-29) })
         other_mark = Mark.create({ when: yesterday })
         old_mark = Mark.create({ when: now.add_days(-450) })

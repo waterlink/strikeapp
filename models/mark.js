@@ -10,10 +10,11 @@ var Mark = models.Mark = function(attributes) {
 
 riot.observable(Mark)
 
-Mark._data = []
+Mark.suffix = "Mark"
+Mark._data = models.Store.new(Mark)
 
 Mark.all = function() {
-  return Mark._data
+  return Mark._data.load()
 }
 
 Mark.last_year = function() {
