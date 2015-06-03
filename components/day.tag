@@ -20,7 +20,12 @@
 
     this.y = 13 * this.index
 
+    isInThePast() {
+      return this.day.when <= now
+    }
+
     colorFromStriked() {
+      if (!this.isInThePast()) { return "#ffffff" }
       return this.striked ? "#196a27" : "#eeeeee"
     }
 

@@ -10,3 +10,12 @@ Date.prototype.add_days = function(x) {
   result.setDate(result.getDate() + x)
   return result
 }
+
+Date.prototype.dayStart = function() {
+  var result = new Date(+this)
+  result.setHours(0)
+  result.setMinutes(0)
+  result.setSeconds(0)
+  result.setMilliseconds(0)
+  return result
+}

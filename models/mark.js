@@ -26,6 +26,16 @@ Mark.create = function(attributes) {
   return Mark.insert(new Mark(attributes))
 }
 
+Mark.createNow = function() {
+  return Mark.create({ when: Date.new() })
+}
+
+Mark.hasToday = function() {
+  return Mark.all().filter(function(mark) {
+    return mark.isToday()
+  }).length > 0
+}
+
 Mark.insert = function(mark) {
   Mark._data.push(mark)
   Mark.trigger("insert", mark)
@@ -36,7 +46,6 @@ Mark.prototype.isLastYear = function() {
   return this.when > Date.new(year_ago)
 }
 
-// FIXME temporary example data
-Mark.create({ when: week_ago })
-Mark.create({ when: yesterday })
-Mark.create({ when: now })
+Mark.prototype.isToday = function() {
+  return +this.when.dayStart() == +Date.new().dayStart()
+}
